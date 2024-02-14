@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>썸네일</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .cont {
+            width: 1280px;
+            margin: 0 auto;
+        }
+        .cont .inner {
+            display: flex;
+            justify-content: space-between;
+        }
+        .cont .inner .big_box {
+            width: 800px;
+            height: 400px;
+        }
+        .cont .inner .big_box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .cont .inner .small_wrap {
+            width: 420px;
+        }
+        .cont .inner .small_wrap .small_box img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        .cont .inner .small_wrap .small_box strong {
+            display: none;
+        }
+    </style>
+    <script>
+        window.onload = () => {
+            let bigImage = document.querySelector('.big_box img');
+            let bigText = document.querySelector('.big_box p');
+            let bigStrong = document.querySelector('.big_box strong');
+            
+            let smallBox = document.querySelectorAll('.small_box');      
+            let smallImage = document.querySelectorAll('.small_box img');
+            let smallText = document.querySelectorAll('.small_box p');
+            let smallStrong = document.querySelectorAll('.small_box strong');
+
+            for(let i = 0; i < smallBox.length; i++) {
+                smallBox[i].onmouseenter = () => {
+                    //alert()
+                    bigImage.src = smallImage[i].src;
+                    bigText.innerHTML = smallText[i].innerHTML;
+                    bigStrong.innerHTML = smallStrong[i].innerHTML;
+                }//smallBox.mouseenter
+            }
+        }//script end
+    </script>
+</head>
+<body>
+    <section class="cont">
+        <div class="inner">
+            <div class="big_box">
+                <img src="img/image01.jpg" alt="">
+                <p class="image_text">이미지1</p>
+                <strong>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta expedita dolorum quae facere accusantium? Inventore reiciendis qui modi fuga asperiores exercitationem et voluptate commodi illum id. Reiciendis illo repellendus ex.</strong>
+            </div><!-- .big_box end -->
+            
+            <div class="small_wrap">
+                <div class="small_box">
+                    <img src="img/image01.jpg" alt="">
+                    <p class="image_text">이미지1</p>
+                    <strong>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta expedita dolorum quae facere accusantium? Inventore reiciendis qui modi fuga asperiores exercitationem et voluptate commodi illum id. Reiciendis illo repellendus ex.</strong>
+                </div><!-- .small_box end -->
+
+                <div class="small_box">
+                    <img src="img/image02.jpg" alt="">
+                    <p class="image_text">이미지2</p>
+                    <strong>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta expedita dolorum quae facere accusantium? Inventore reiciendis qui modi fuga asperiores exercitationem et voluptate commodi illum id. Reiciendis illo repellendus ex.</strong>
+                </div><!-- .small_box end -->
+
+                <div class="small_box">
+                    <img src="img/image03.jpg" alt="">
+                    <p class="image_text">이미지3</p>
+                    <strong>Lorem ipsum</strong>
+                </div><!-- .small_box end -->
+            </div><!-- .small_wrap end -->
+        </div><!-- .inner end -->
+    </section><!-- .cont end -->
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반복문</title>
+    <style>
+        .list .on {
+            color: red;
+        }
+    </style>
+    <script>
+        window.onload = () => {
+            //for 반복문 : 반복시켜줌, 특정요소를
+            //반복해서 실행
+            //for(초기값; 조건식; 증감식)
+            for(let i = 0; i < 10; i++) {
+                console.log(i)
+            }
+
+            let list = document.querySelectorAll('.list li');   
+            //li한테 클릭했을 때 실행
+            //내가 클릭한 li한테 클래스명 on추가
+            
+            for(let i = 0; i < list.length; i++) {
+                console.log(i); //0, 1, 2, 3
+                list[i].onclick = () => {
+                    //alert(i)
+                    
+                    list.forEach(function(item){
+                        item.classList.remove('on');
+                    });
+                    
+                    list[i].classList.add('on');
+
+                    
+                }
+            }
+ 
+
+        }//script end
+    </script>
+</head>
+<body>
+    <ul class="list">
+        <li class="on">menu1</li>
+        <li>menu2</li>
+        <li>menu3</li>
+        <li>menu4</li>
+    </ul>
+</body>
+</html>

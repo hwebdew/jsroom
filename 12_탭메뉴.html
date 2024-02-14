@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>탭메뉴</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        li {
+            list-style: none;
+        }
+        body {
+            background-color: beige;
+        }
+        .cont {
+            max-width: 1280px;
+            width: calc(100% - 40px);
+            margin: 0 auto;
+        }
+        .cont .tab_menu {
+            display: flex;
+            gap: 30px;
+            margin: 20px 0 10px;
+        }
+        .cont .tab_menu li.on,
+        .cont .tab_menu li:hover {
+            text-decoration: underline;
+        }
+        .cont .tab_item {
+            display: flex;
+            justify-content: space-between;
+            display: none;
+        }
+        .cont .tab_item.on {
+            display: flex;
+        }
+        .cont .tab_item div {
+            background-color: rgb(0, 0, 0);
+            color: white;
+            width: calc(100% / 2 - 10px);
+            height: 300px;
+        }
+    </style>
+
+    <script>
+        window.onload = () => {
+            let tabMenu = document.querySelectorAll('.tab_menu li');
+            let tabCont = document.querySelectorAll('.tab_item'); 
+            
+            for(let i = 0; i < tabMenu.length; i++) {
+                //탭메뉴를 클릭했을 때 실행
+                //내가 클릭한 메뉴의 순서에 맞춰서
+                //탭콘텐츠에게 동일한 순서대로 클래스명 on이 추가
+                tabMenu[i].onclick = () => {
+
+                    tabMenu.forEach(function(item){
+                        item.classList.remove('on')
+                    });
+                    tabMenu[i].classList.add('on');
+
+                    tabCont.forEach(function(item){
+                        item.classList.remove('on');
+                    });
+                    tabCont[i].classList.add('on');
+
+
+
+                }//tabMenu.click
+
+            }
+
+        }//script end
+    </script>
+</head>
+<body>
+    <section class="cont">
+        <h3>tab menu title</h3>
+        <ul class="tab_menu">
+            <li class="on">menu1</li>
+            <li>menu2</li>
+            <li>menu3</li>
+            <li>menu4</li>
+        </ul><!-- .tab_menu end -->
+
+        <div class="tab_item on">
+            <div>1</div>
+            <div>2</div>
+        </div><!-- .tab_item end -->
+
+        <div class="tab_item">
+            <div>3</div>
+            <div>4</div>
+        </div><!-- .tab_item end -->
+
+        <div class="tab_item">
+            <div>5</div>
+            <div>6</div>
+        </div><!-- .tab_item end -->
+
+        <div class="tab_item">
+            <div>7</div>
+            <div>8</div>
+        </div><!-- .tab_item end -->
+
+    </section><!-- .cont end -->
+</body>
+</html>

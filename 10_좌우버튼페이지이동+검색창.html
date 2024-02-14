@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>좌우버튼 + 검색창</title>
+    <link rel="stylesheet" href="css/10.css">
+    <script>
+        window.onload = function(){
+            //alert()
+            let slide = document.querySelectorAll('.slide');
+
+            let prevBtn= document.querySelector('.prev');
+            let nextBtn= document.querySelector('.next');
+
+            let pageNum = document.querySelector('.page_num');
+            let pageAll = document.querySelector('.page_all');
+
+            let i = 0;
+
+
+            //slide 총 갯수 적용
+            pageAll.innerHTML = '/' +  slide.length;
+
+            //nextBtn를 클릭했을 때 실행
+            //slide에게 클래스 on이 추가
+            //나머지 slide에게는 클래스명 on이 삭제
+            nextBtn.onclick = () => { 
+                i++;
+                if(i >= slide.length) {
+                    i = 0;
+                }
+
+                slide.forEach(function(item){
+                    item.classList.remove('on');
+                });
+
+                slide[i].classList.add('on');
+                pageNum.innerHTML = i + 1;
+                //i = 0, 1, 2, 0, 1 , 2... +  1 
+                //1, 2, 3, 1, 2, 3.....
+            }
+
+            //prevBtn을 클릭을 했을 때 실행
+            //앞 slide에게 클래스명 on 추가
+            //나머지 slide에게 클래스명 on 삭제
+            //감소연산자 --;
+
+            prevBtn.onclick = () => {
+                i--;
+                if(i < 0) {
+                    //i = 0;
+                    i = slide.length - 1;
+                }
+                console.log(slide.length)
+                console.log(i)
+
+                slide.forEach(function(item){
+                    item.classList.remove('on')
+                })
+                slide[i].classList.add('on');
+                pageNum.innerHTML = i + 1;
+                
+            }
+
+            //검색박스
+            //검색을 클릭했을 때 실행
+            //검색박스가 나타남.
+            //검색을 클릭했을 때 
+            //검색박스가 사라짐.
+            //조건식
+            //검색박스의 스타일중에서 display값이 none일 때 실행
+
+            let searchBtn = document.querySelector('.search_btn');
+            let searchBox = document.querySelector('.search_box');
+
+            searchBtn.onclick = () => {
+                if(getComputedStyle(searchBox).display === 'none') {
+                    searchBox.style.display = 'block';
+                } else {
+                    searchBox.style.display = 'none';
+                }
+            }            
+
+        }
+
+    </script>    
+</head>
+<body>
+    <header class="header">
+        <div class="inner">
+            <h1>
+                <a href="#">logo</a>
+            </h1>
+            <div class="search_btn">
+                검색
+            </div><!-- .search_btn end -->
+        </div><!-- .inner end -->
+
+        <div class="search_box">
+            <div class="inner">
+                <input type="text" placeholder="검색어를 입력해주세요.">
+            </div><!-- .inner end -->
+        </div><!-- .search_box end -->
+
+    </header><!-- .header end -->
+    <main>
+        <section class="main_visual">
+            <div class="slide_wrap">
+                <div class="slide on">
+                    <img src="img/image01.jpg" alt="">
+                    <div>
+                        <h2>slide title</h2>
+                        <a href="#">view more</a>
+                    </div>                    
+                </div><!-- .slide end -->
+
+                <div class="slide">
+                    <img src="img/image02.jpg" alt="">
+                    <div>
+                        <h2>slide title</h2>
+                        <a href="#">view more</a>
+                    </div>                    
+                </div><!-- .slide end -->
+
+                <div class="slide">
+                    <img src="img/image03.jpg" alt="">
+                    <div>
+                        <h2>slide title</h2>
+                        <a href="#">view more</a>
+                    </div>                    
+                </div><!-- .slide end -->
+            </div><!-- .slide_wrap end -->
+            <div class="slide_btn">
+                <ul class="slide_navi">
+                    <li class="prev">이전</li>
+                    <li class="next">다음</li>
+                </ul><!-- .slide_navi end -->
+
+                <ul class="slide_page">
+                    <li class="page_num">1</li>
+                    <li class="page_all"></li>
+                </ul><!-- .slide_page end -->
+            </div><!-- .slide_btn end -->
+        </section><!-- .main_visual end -->
+    </main>
+</body>
+</html>
