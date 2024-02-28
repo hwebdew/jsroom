@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배경이미지 변경</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        li {
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .main_visual {
+            height: 100vh;
+        }
+        .main_visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cont {
+            height: 100vh;
+            background: url('img/image04.jpg') center center / cover no-repeat;
+            display: flex;           
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cont .inner {
+            max-width: 1280px;
+            width: calc(100% - 40px);
+            margin: 0 auto;
+        }
+        .cont .inner h3 {
+            font-size: 40px;
+        }
+        .cont .inner .list {
+            display: flex;
+            justify-content: space-between;
+        }
+        .cont .inner .list .item {
+            width: calc(100% / 4 - 10px);
+            border: 1px solid #333;
+            padding: 20px;
+            background-color: #ffffff65;
+            backdrop-filter: blur(5px);
+        }
+    </style>
+    <script src="lib/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function(){
+            let cont = $('.cont');
+            let contItem = $('.cont .item');
+
+            contItem.mouseenter(function(){
+                //attr => 해당요소의 속성에 대한 속성값을 찾을때, 불러올때, 변경할때 사용
+                console.log($(this).attr('data-bg'))
+                let thisBg = $(this).attr('data-bg');
+                cont.css({
+                    'background-image' : 'url(' + thisBg + ')'
+                });
+
+                let thisLink = $(this).children('a').attr('href');
+                //children() => 자식 찾기
+                //find() => 자식, 자손 모두 적용
+                console.log(thisLink)
+                $('.main_visual a').attr('href', thisLink)
+
+            }); //contItem.mouseenter()
+
+            /* a링크 방지 */
+            $('.item a').click(function(e){
+                e.preventDefault();
+            });//.item a.click()
+
+        });//jquery end
+    </script>    
+</head>
+<body>
+    <section class="main_visual">
+        <a href="#">
+            <img src="img/image01.jpg" alt="">
+        </a>
+    </section><!-- .main_visual end -->
+
+    <section class="cont">
+        <div class="inner">
+            <h3>배경이미지 변경</h3>
+            <div class="list">
+                <div class="item" data-bg="img/diffuser-04.jpg">
+                    <a href="https://www.naver.com">
+                        <h4>title</h4>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facilis doloribus quas aspernatur sunt quam perspiciatis ea neque repudiandae ab! Architecto, delectus similique deserunt tempore non voluptatum assumenda porro rerum blanditiis.</p>
+                    </a>
+                </div><!-- .item end -->
+
+                <div class="item" data-bg="img/diffuser-03.jpg">
+                    <a href="https://www.kyowontour.com/">
+                        <h4>title</h4>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facilis doloribus quas aspernatur sunt quam perspiciatis ea neque repudiandae ab! Architecto, delectus similique deserunt tempore non voluptatum assumenda porro rerum blanditiis.</p>
+                    </a>
+                </div><!-- .item end -->
+
+                <div class="item" data-bg="img/diffuser-02.jpg">
+                    <a href="#">
+                        <h4>title</h4>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facilis doloribus quas aspernatur sunt quam perspiciatis ea neque repudiandae ab! Architecto, delectus similique deserunt tempore non voluptatum assumenda porro rerum blanditiis.</p>
+                    </a>
+                </div><!-- .item end -->
+
+                <div class="item" data-bg="img/diffuser-01.jpg">
+                    <a href="#">
+                        <h4>title</h4>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facilis doloribus quas aspernatur sunt quam perspiciatis ea neque repudiandae ab! Architecto, delectus similique deserunt tempore non voluptatum assumenda porro rerum blanditiis.</p>
+                    </a>
+                </div><!-- .item end -->
+            </div><!-- .list end -->
+        </div><!-- .inner end -->
+    </section><!-- .cont end -->
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스크롤시 콘텐츠 변화</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        header {
+            height: 100px;
+            font-size: 40px;
+            text-align: center;
+            line-height: 100px;
+        }
+        header.on {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: rgba(255, 0, 0, 0.5);
+            z-index: 999;            
+        }
+        section {
+            height: 100vh;
+        }
+
+        .main_visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .cont01 {
+            background: url(img/diffuser-03.jpg) center center / cover fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .cont01 div {
+            width: 200px;
+            height: 200px;
+            background-color: #fff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            margin: 0 20px; 
+            opacity: 0;
+            transform: translateY(100px);
+        }
+        .cont01 div.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .cont01 div.on0 {transition: 0.5s;}
+        .cont01 div.on1 {transition: 0.5s 0.7s;}
+        .cont01 div.on2 {transition: 0.5s 1s;}
+        .cont01 div.on3 {transition: 0.5s 1.5s;}
+
+       
+        .cont02 {
+            font-size: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+    <script>
+        window.onload = () => {
+            let cont = document.querySelector('.cont01');
+            let contItem =  cont.querySelectorAll('div');
+            let header = document.querySelector('header');
+
+            let contTop = cont.offsetTop;
+            //cont.offsetTop => cont01이 브라우저 시작지점에서부터 떨어진 y축값
+            console.log(contTop);
+            window.addEventListener('scroll', () => {
+                let scrollBar = window.scrollY;
+                console.log(scrollBar)
+
+                //header 헤더스타일 변경[15번파일 참고]
+                //스크롤했을 때 header가 상위에 고정되도록 작성
+                if (0 < scrollBar) {
+                    header.classList.add('on')
+                } else {
+                    header.classList.remove('on');
+                }
+
+
+
+
+                if(contTop <= scrollBar) {
+                    //contItem에게(모든div) 클래스명 on 추가
+                    //forEach()
+                    contItem.forEach((item, index) => {
+                        //let item = [contItem, contItem, contItem, contItem]
+                        item.classList.add('on' + index, 'active');
+                    });
+                } else if (scrollBar === 0) {
+                    contItem.forEach((item, index) => {
+                        item.classList.remove('on' + index, 'active');
+                    });
+                }
+            });            
+        };//script end
+    </script>
+</head>
+<body>
+    <header>🎨</header>
+    <section class="main_visual">
+        <img src="img/image01.jpg" alt="">
+    </section><!-- .main_visual end -->
+
+    <section class="cont01">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+    </section><!-- .cont01 end -->
+
+    <section class="cont02">
+        <p>🎁title</p>
+    </section><!-- .cont02 end -->
+</body>
+</html>

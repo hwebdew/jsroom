@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스와이퍼 슬라이드</title>
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="css/26.css">
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        window.onload = () => {
+            var swiper = new Swiper(".swiper01", {
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+                pagination: {
+                    el: ".swiper-pagination",
+                },
+            });
+
+            //swiper02
+            var swiper = new Swiper(".swiper02", {
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+            });
+
+
+
+            //swiper03
+            var swiper = new Swiper(".swiper03", {
+                slidesPerView: 2.5,
+                spaceBetween: 20,
+                //자동슬라이드
+                autoplay: {
+                    delay: 3000,
+                    //disableOnInteraction: false,
+                },
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+            });//swiper03
+
+
+        }//script end
+    </script>
+</head>
+
+<body>
+    <!-- swiper demo -->
+    <section class="slide01">
+        <!-- Swiper -->
+        <div class="swiper swiper01">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="img/image01.jpg" alt="">
+                </div> <!-- swiper-slide end -->
+
+                <div class="swiper-slide">
+                    <img src="img/image05.jpg" alt="">
+                </div> <!-- swiper-slide end -->
+
+                <div class="swiper-slide">
+                    <img src="img/image04.jpg" alt="">
+                </div> <!-- swiper-slide end -->
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+
+            <div class="swiper-pagination"></div>
+        </div><!-- .swiper.swiper01 -->
+
+    </section><!-- .slide01  end -->
+
+    <section class="slide02">
+        <!-- Swiper -->
+        <div class="swiper swiper02">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="img/image02.jpg" alt="">
+                </div> <!-- swiper-slide -->
+
+                <div class="swiper-slide">
+                    <img src="img/image03.jpg" alt="">
+                </div> <!-- swiper-slide -->
+
+                <div class="swiper-slide">
+                    <img src="img/image04.jpg" alt="">
+                </div> <!-- swiper-slide -->
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </section><!-- .slide02  end -->
+
+    <section class="slide03">
+        <!-- Swiper -->
+        <div class="swiper swiper03">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="img/diffuser-01.jpg" alt="">
+                </div> <!-- swiper-slide -->
+
+                <div class="swiper-slide">
+                    <img src="img/diffuser-02.jpg" alt="">
+                </div> <!-- swiper-slide -->
+
+                <div class="swiper-slide">
+                    <img src="img/image04.jpg" alt="">
+                </div> <!-- swiper-slide -->
+
+                <div class="swiper-slide">
+                    <img src="img/image05.jpg" alt="">
+                </div> <!-- swiper-slide -->
+            </div>
+
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+
+        </div>
+    </section><!-- .slide03 end -->
+
+
+</body>
+
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스타일 부드럽게 이동</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        li {
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .gnb_bar span {
+            position: absolute;
+            left: -99999px;
+        }
+        header {
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+        header nav {
+            position: relative;
+        }
+        header nav .gnb {
+            
+            display: flex;
+            
+        }
+        header nav .gnb li {
+            line-height: 100px;
+            width: 100px;
+            text-align: center;
+        }
+        header nav .gnb_bar {
+            width: 100px;
+            height: 3px;
+            background-color: #333;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            transition: 0.7s;
+        }
+        .main_visual img{
+            height: 500px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .cont_menu {
+            margin: 200px 0;
+            position: relative;
+        }
+        .cont_menu ul {
+            display: flex;
+        }
+        .cont_menu ul li {
+            height: 60px;
+            background-color: antiquewhite;
+            padding: 0 30px;
+            font-size: 25px;
+            line-height: 60px;
+        }
+        .cont_menu .cont_bar {
+            width: 100px;
+            height: 3px;
+            background-color: rgb(20, 132, 94);
+            position: absolute;
+            left: 0;            
+            bottom: 0;
+            transition: 0.7s;
+        }
+    </style>
+    <script>
+        window.onload = () => {
+            let menu = document.querySelectorAll('.gnb li');
+            let menuBar = document.querySelector('.gnb_bar');
+
+            for(let i = 0; i < menu.length; i++) {
+                menu[i].addEventListener('mouseenter', () => {
+                    let menuLeft = menu[i].offsetLeft;
+                    //menu[i].offsetLeft => .gnb li는 부모인 nav를 기준으로 좌측에서 떨어진 값
+                    //offsetTop, offsetLeft는 
+                    //브라우저에서 떨어진 값을 찾기
+                    //부모에게 position이 있다면 부모가 중심이 됨
+                    console.log(menuLeft) //0, 100, 200...
+                    menuBar.style.left = menuLeft + 'px';
+                })
+            }
+
+            let contMenu = document.querySelectorAll('.cont_menu li');
+            let contBar = document.querySelector('.cont_bar');    
+
+            //contBar의 가로값 설정
+            //contMenu중 첫번째 가로값으로 설정
+            //가로값확인,찾기 => clientWidth
+            contBar.style.width = contMenu[0].clientWidth + 'px';
+
+            for(let i = 0; i < contMenu.length; i++) {
+                contMenu[i].addEventListener('mouseenter', () => {
+                    let contMenuLeft = contMenu[i].offsetLeft; 
+                    contBar.style.left = contMenuLeft + 'px';
+                    contBar.style.width = contMenu[i].clientWidth + 'px'; 
+                });
+            }
+        };//script end
+    </script>
+</head>
+<body>
+    <header>
+        
+        <nav>
+            <ul class="gnb">
+                <li><a href="#">menu1</a></li>
+                <li><a href="#">menu2</a></li>
+                <li><a href="#">menu3</a></li>
+                <li><a href="#">menu4</a></li>
+            </ul><!-- .gnb end -->
+            <div class="gnb_bar">
+                <span>내비게이션 바</span>
+            </div><!-- .gnb_bar end -->
+        </nav>
+    </header>
+    <section class="main_visual">
+        <img src="img/image04.jpg" alt="">
+    </section><!-- .main_visual end -->
+
+    <div class="cont_menu">
+        <ul>
+            <li>html....🎈</li>
+            <li>css</li>
+            <li>javascript</li>
+        </ul>
+        <div class="cont_bar"></div>
+    </div><!-- .cont_menu end -->
+</body>
+</html>

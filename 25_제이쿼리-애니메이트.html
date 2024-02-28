@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>애니메이트</title>
+    <style>
+        button {
+            width: 120px;
+            height: 40px;
+            font-size: 18px;
+            border: 1px solid #333;
+            background-color: palegoldenrod;
+        }
+        figure {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        figure img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+    <script src="lib/jquery-3.7.1.min.js"></script>
+    <script src="lib/jquery-ui.min.js"></script>
+    <script>
+        $(function(){
+            $('.btn01').click(function(){
+                $('.image01').animate({
+                    //'left' : '200px'
+                    left : '200px'
+                }, 500, 'easeInOutBack');
+            });//.btn01.click()
+
+            $('.btn02').click(function(){
+                $('.image02 img').toggle(500, 'easeInOutBack');
+            });//.btn02.click()
+        });
+    </script>
+</head>
+<body>
+    <button class="btn01">
+        버튼1
+    </button><!-- .btn01 end -->
+    <figure class="image01">
+        <img src="img/image05.jpg" alt="">
+    </figure><!-- .image01 end -->
+
+    <button class="btn02">
+        버튼2
+    </button><!-- .btn01 end -->
+    <figure class="image02">
+        <img src="img/image01.jpg" alt="">
+    </figure><!-- .image01 end -->
+
+
+</body>
+</html>

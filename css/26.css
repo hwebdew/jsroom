@@ -1,0 +1,52 @@
+@charset "utf-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.slide01 .swiper-slide {
+    height: 100vh;
+}
+.slide01 .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slide02 {margin: 100px 0;}
+.slide02 .swiper-slide {height: 500px; background-color: rgb(222, 222, 222); display: flex; align-items: center; justify-content: center; font-size: 100px;}
+
+.slide03 {
+    max-width: 1280px;
+    width: calc(100% - 40px);
+    margin: 100px auto;
+    position: relative;
+}
+.slide03 .swiper {
+    position: static; /* position초기화 */
+}
+.slide03 .swiper-slide {
+    height: 300px;
+}
+.slide03 .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.slide03 .swiper-horizontal>.swiper-pagination-bullets,
+.slide03 .swiper-pagination-bullets.swiper-pagination-horizontal,
+.slide03 .swiper-pagination-custom, 
+.slide03 .swiper-pagination-fraction {
+    bottom: -20px;
+}
+.slide03 .swiper-button-next, 
+.slide03 .swiper-rtl .swiper-button-prev {
+    right: -20px;
+}
+
+.slide03 .swiper-button-prev, 
+.slide03 .swiper-rtl .swiper-button-next {
+    left: -20px;
+}

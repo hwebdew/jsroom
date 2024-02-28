@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>해상도 크기 변화</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        li {
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .menu {
+            text-align: center;
+        }
+        .menu ul li {
+            height: 40px;
+            line-height: 40px;
+            padding: 0 30px;
+            display: inline-block;
+            border: 1px solid #333;
+        }
+        .menu ul li.on {
+            background-color: tomato;
+            color: #fff;
+        }
+    </style>
+    <script src="lib/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function(){
+
+            //1. 접속했을 때 화면 크기 인식
+            //$(window).width() => 브라우저 크기
+            //767px이하일 때 클릭 이벤트로 변경
+            let menu = $('.menu li');
+
+            if($(window).width() > 768) {
+                //화면의 크기가 768보다 더 클 때 실행
+                menu.mouseenter(function(){
+                    menu.removeClass('on');
+                    $(this).addClass('on');
+                });//menu.mouseenter();
+            } else {
+                //768이하일 때 click로 설정
+                menu.click(function(){
+                    menu.removeClass('on');
+                    $(this).addClass('on');
+                });//menu.mouseenter();
+            } 
+            /* 1024 이하 태블릿 시작 
+            480, 460 이하 모바일 */
+
+            //2. 화면크기 조절할때마다 스크립트 변화
+            $(window).resize(function(){
+                if($(window).width() > 768) {
+                    //화면의 크기가 768보다 더 클 때 실행
+                    menu.css({
+                        'background-color' : 'tan'
+                    })
+                } else {
+                    menu.css({
+                        'background-color' : 'orange'
+                    })
+                }
+            });//window.resize()
+
+
+        });//jquery end
+    </script>    
+</head>
+<body>
+    <div class="menu">
+        <ul>
+            <li class="on"><a href="#">menu1</a></li>
+            <li><a href="#">menu2</a></li>
+            <li><a href="#">menu3</a></li>
+            <li><a href="#">menu4</a></li>
+            <li><a href="#">menu5</a></li>
+        </ul>
+    </div><!-- .menu end -->
+</body>
+</html>

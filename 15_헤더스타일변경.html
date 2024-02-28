@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>헤더스타일 변경</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        li {
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        header h1 {
+            border-bottom: 1px solid #333;
+            padding: 15px 0;
+            text-align: center;
+        }
+        header nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 30px 0;
+        }
+        header.on {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #ffffff90;
+            backdrop-filter: blur(7px);
+        }
+        header.on h1 {
+            display: none;
+        }
+        section {
+            height: 100vh;
+        }
+        .main_visual {
+            background: url('img/diffuser-01.jpg') center center / cover fixed;
+        }
+        .cont01 {
+            background: url('img/diffuser-02.jpg') center center / cover fixed;
+        }
+        .cont02 {
+            background: url('img/diffuser-03.jpg') center center / cover fixed;            
+        }
+    </style>
+    <script>
+        window.onload = () => {
+            let header = document.querySelector('header'); 
+
+            window.addEventListener('scroll', () => {
+                let scrollBar = window.scrollY; 
+                console.log(scrollBar)
+                //header한테 클래스명 on 추가
+                //header.classList.add('on');
+                //window.scrollY => 세로 스크롤바가 움직이는 값 
+               
+                if(scrollBar > 200) {
+                    header.classList.add('on');
+                } else {
+                    //header한테 클래스명 on 제거;
+                    header.classList.remove('on');
+                }             
+            });
+        };//script end
+    </script>
+</head>
+<body>
+    <header>
+        <h1>logo</h1>
+        <nav>
+            <ul>
+                <li><a href="#">menu1</a></li>
+                <li><a href="#">menu2</a></li>
+                <li><a href="#">menu3</a></li>
+                <li><a href="#">menu4</a></li>
+                <li><a href="#">menu5</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="main_visual"></section>
+        <section class="cont01"></section>
+        <section class="cont02"></section>
+    </main>
+</body>
+</html>

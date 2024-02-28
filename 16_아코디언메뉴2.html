@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>아코디언 메뉴</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        li {
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        body {
+            background-color: #000;
+            color: #fff;
+        }
+        .header .inner {
+            width: calc(100% - 40px);
+            margin: 0 auto;
+        }
+        .header .inner nav .gnb .depth01 > a {
+            font-size: 40px;
+        }
+        .header .inner nav .gnb .depth01 > a.on {
+            color: yellow;
+        }
+        .header .inner nav .gnb .depth02 {
+            margin-top: 20px;
+            display: none;
+        }
+        .header .inner nav .gnb .depth02.on {
+            display: block;
+        }
+        .header .inner nav .gnb .depth02 li {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+    </style>
+
+    <script>
+        window.onload = () => {
+            let menu1 = document.querySelectorAll('.depth01 > a');
+            let menu2 = document.querySelectorAll('.depth02');
+            
+            for (let i = 0; i < menu1.length; i++) {
+                menu1[i].addEventListener('click', () => {
+                    if(getComputedStyle(menu2[i]).display === 'none') {
+                        //클릭한 요소의 뒤에 있는 
+                        //형제선택자에게 클래스명 추가
+                        menu2.forEach((item) => {
+                            //item => menu2[0], menu2[1], menu2[2] 
+                            item.classList.remove('on');
+                        });
+                        
+                        menu1[i].nextElementSibling.classList.add('on');
+                    } else {
+                        menu1[i].nextElementSibling.classList.remove('on');
+                    }   
+                });
+            }
+        };//script end
+    </script>
+</head>
+<body>
+    <header class="header">
+        <div class="inner">
+            <h1>logo</h1>
+
+            <nav>
+                <ul class="gnb">
+                    <li class="depth01">
+                        <a href="#">menu1</a>
+                        <ul class="depth02">
+                            <li><a href="#">menu1-1</a></li>
+                            <li><a href="#">menu1-2</a></li>
+                            <li><a href="#">menu1-3</a></li>
+                            <li><a href="#">menu1-4</a></li>
+                        </ul><!-- .depth02 end -->
+                    </li><!-- .depth01 end -->
+
+                    <li class="depth01">
+                        <a href="#">menu2</a>
+                        <ul class="depth02">
+                            <li><a href="#">menu2-1</a></li>
+                            <li><a href="#">menu2-2</a></li>
+                            <li><a href="#">menu2-3</a></li>
+                            <li><a href="#">menu2-4</a></li>
+                        </ul><!-- .depth02 end -->
+                    </li><!-- .depth01 end -->
+
+                    <li class="depth01">
+                        <a href="#">menu3</a>
+                        <ul class="depth02">
+                            <li><a href="#">menu3-1</a></li>
+                            <li><a href="#">menu3-2</a></li>
+                            <li><a href="#">menu3-3</a></li>
+                            <li><a href="#">menu3-4</a></li>
+                        </ul><!-- .depth02 end -->
+                    </li><!-- .depth01 end -->
+                </ul><!-- .gnb end -->
+            </nav>
+        </div><!-- .inner end -->
+    </header><!-- .header end -->
+</body>
+</html>

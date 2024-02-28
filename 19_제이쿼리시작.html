@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제이쿼리</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .text {
+            font-size: 30px;
+        }
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: aquamarine;
+            border: 1px solid #333;
+        }
+
+        button {
+            margin: 40px 0 20px;
+        }
+        img {
+            width: 300px;
+            display: block;
+        }
+    </style>
+    <script src="lib/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function(){
+            let text = $('.text');
+            let divTag = $('div');
+
+            text.css({
+                //'속성' : '속성값',
+                'font-size' : '50px',
+                'color' : 'red',
+                'font-weight' : 'bold'
+                /* '폰트두께' : '두껍게' */
+            });
+
+            //divTag.innerHTML = '???';
+            divTag.text('hello');
+
+
+            let up = $('.up');
+            let down = $('.down');
+            let image = $('img');
+
+            up.click(function(){
+                image.slideUp(1000);
+                //시간 400기본 => 0.4초
+            });
+
+            //down을 클릭했을 때 실행
+            //image를 슬라이드다운(slideDown())
+            down.click(function(){
+                image.slideDown();
+            });
+
+            //slideDown, slideUp, 
+            //classList.add, classList.remove...
+            //forEach()..........
+            //=> 메서드라고 함.
+            //객체가 어떤 동작을 진행하는 것
+            //값을 받아오는 것.
+            //데이터를 조작하는 것. 
+
+        });//jquery end
+    </script>
+</head>
+<body>
+    <!-- jquery.com -->
+    <p class="text">hello</p>
+    <div></div>
+
+    <button class="up">슬라이드업</button>
+    <button class="down">슬라이드다운</button>
+    <img src="img/diffuser-03.jpg" alt="">
+</body>
+</html>
