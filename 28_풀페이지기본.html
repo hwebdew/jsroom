@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>풀페이지 기본</title>
+    <link rel="stylesheet" href="lib/fullPage.js-master/dist/fullpage.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        body {
+            color: #333;
+            /* line-height: 1; */
+        }
+
+        .header {
+            width: 100%;
+            height: 100px;
+            background-color: rgba(0, 0, 0, 0.313);
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 999;
+            color: #fff;
+            text-align: center;
+            line-height: 100px;
+        }
+
+        .fp-viewing-page2 .header {
+            background-color: rgb(238, 191, 130);
+        }
+
+        .fp-viewing-page3 .header {
+            background-color: rgb(90, 95, 150);
+        }
+
+        #fp-nav ul li .fp-tooltip {
+            color: red;
+        }
+
+        .fp-viewing-page3 #fp-nav ul li .fp-tooltip {
+            color: #fff;
+        }
+
+        #fp-nav ul li a.active span,
+        .fp-slidesNav ul li a.active span,
+        #fp-nav ul li:hover a.active span,
+        .fp-slidesNav ul li:hover a.active span {
+            width: 10px;
+            height: 10px;
+            margin: -5px 0 0 -5px;
+        }
+
+        #section1 {
+            background: url('img/image09.jpg') center center / cover no-repeat;
+        }
+
+        #section2 {
+            background-color: rgb(249, 192, 167);
+        }
+
+        #section3 {
+            background: url('img/image08.jpg');
+        }
+
+        .footer {
+            height: 200px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 70px 0;
+        }
+    </style>
+
+
+    <script src="lib/fullPage.js-master/dist/fullpage.js"></script>
+    <script>
+        window.onload = () => {
+            var myFullpage = new fullpage('#fullpage', {
+                anchors: ['page1', 'page2', 'page3', 'page4'],
+                navigation: true,
+
+                navigationTooltips: ['🎨', '두번째페이지', '세번째페이지', '🎪'],
+                showActiveTooltip: true, //false
+                menu: '#menu',
+                navigationPosition: 'left',
+            });
+        };//script end
+    </script>
+</head>
+
+<body>
+    <!-- fullpage.js -->
+    <header class="header">
+        <h2>header</h2>
+    </header><!-- header end -->
+
+    <div id="fullpage">
+
+        <div class="section sec-1" id="section1">
+            <h1>text</h1>
+              
+        </div><!-- section sec-1 -->
+
+        <div class="section sec-2" id="section2">
+            <h1>Section 2</h1>  
+            <div class="slide slide-1">
+                <p>slide 1</p>
+            </div><!-- .slide  end -->
+            <div class="slide slide-2">
+                <p>slide 2</p>
+            </div><!-- .slide end -->
+        </div>
+        <div class="section sec-3" id="section3">
+            <h1>Section 3</h1>
+        </div>
+
+        <section class="section sec-4">
+            <h1>Section 4</h1>
+        </section><!-- section.sec-4 -->
+
+        <footer class="section footer fp-auto-height">
+            <p>footer<br />
+                @hasujeong</p>
+        </footer><!-- footer -->
+    </div><!--  -->
+</body>
+
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반응형</title>
+    <link rel="stylesheet" href="lib/fullPage.js-master/dist/fullpage.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .header {
+            width: 100%;
+            height: 100px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #ffffff8e;
+            text-align: center;
+            line-height: 100px;
+            backdrop-filter: blur(5px);
+            z-index: 9999;
+
+        }
+
+        .section {
+            text-align: center;
+        }
+
+        #section0 {
+            background: url('img/image04.jpg') center center / cover no-repeat;
+        }
+
+        #section1 {
+            background: url('img/image05.jpg') center center / cover no-repeat;
+        }
+
+        #section2 {
+            background: url('img/image06.jpg') center center / cover no-repeat;
+        }
+
+
+        .section01 .inner {
+            max-width: 1280px;
+            width: calc(100% - 40px);
+            margin: 0 auto;
+        }
+
+        .section01 .inner .list {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .section01 .inner .list .item {
+            width: calc(100% / 4 - 10px);
+            background-color: #ffffff92;
+            padding: 30px;
+            border: 1px solid #333;
+            backdrop-filter: blur(3px);
+        }
+
+        @media screen and (max-width:767px) {
+            .section01 {
+                padding: 50px 0;
+            }
+            .section01 .inner .list {
+                flex-wrap: wrap;
+                row-gap: 20px;
+            }
+
+            .section01 .inner .list .item {
+                width: calc(100% / 2 - 10px);
+            }
+        }
+
+        /* 767 */
+    </style>
+
+    <script src="lib/fullPage.js-master/dist/fullpage.js"></script>
+    <script>
+        window.onload = () => {
+            var myFullpage = new fullpage('#fullpage', {
+                //sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', 'whitesmoke', '#ccddff'],
+                anchors: ['firstPage', 'secondPage', '3rdPage'],
+                navigation: true,
+                navigationTooltips: ['Page 1', 'Page 2', 'Any text!'],
+                showActiveTooltip: true,
+                menu: '#menu',
+                responsiveWidth: 640,
+                afterResponsive: function (isResponsive) {
+
+                }
+            });
+        };//script end
+    </script>
+</head>
+
+<body>
+    <header class="header">
+        <h1>header</h1>
+    </header><!-- .header end -->
+
+    <div id="fullpage">
+        <div class="section section01 fp-auto-height-responsive" id="section0">
+            <div class="inner">
+                <h3>section title</h3>
+                <div class="list">
+                    <div class="item">
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, porro totam quisquam,
+                            voluptas labore architecto molestiae quas est perspiciatis saepe odio consectetur aut amet
+                            deleniti provident, voluptate qui at consequuntur.</p>
+                    </div><!-- .item end -->
+
+                    <div class="item">
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, porro totam quisquam,
+                            voluptas labore architecto molestiae quas est perspiciatis saepe odio consectetur aut amet
+                            deleniti provident, voluptate qui at consequuntur.</p>
+                    </div><!-- .item end -->
+
+                    <div class="item">
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, porro totam quisquam,
+                            voluptas labore architecto molestiae quas est perspiciatis saepe odio consectetur aut amet
+                            deleniti provident, voluptate qui at consequuntur.</p>
+                    </div><!-- .item end -->
+
+                    <div class="item">
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, porro totam quisquam,
+                            voluptas labore architecto molestiae quas est perspiciatis saepe odio consectetur aut amet
+                            deleniti provident, voluptate qui at consequuntur.</p>
+                    </div><!-- .item end -->
+
+                </div><!-- .list end -->
+            </div><!-- .inner end -->
+        </div><!-- .section #section0 -->
+        <div class="section" id="section1">
+            <h1>Section 2</h1>
+        </div>
+        <div class="section" id="section2">
+            <h1>Section 3</h1>
+        </div>
+    </div>
+
+</body>
+
+</html>
